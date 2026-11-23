@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lantern Clash — Duel of the Ember Isles</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div id="brand">🏮 Lantern Clash</div>
+    <div id="roundBadge">Round 1</div>
+    <div id="topActions">
+      <button id="helpBtn" type="button" title="How to play (H)">How to play</button>
+      <button id="muteBtn" type="button" title="Sound on/off (M)">🔊 Sound</button>
+    </div>
+  </header>
+
+  <main id="table">
+    <section id="foeZone" aria-label="Opponent">
+      <div class="fighter" id="foeFighter">
+        <div class="avatar foeAvatar">🌑</div>
+        <div class="fighterInfo">
+          <div class="fighterName">Sable, Keeper of the Far Lantern</div>
+          <div class="lifeRow">
+            <div class="lifeBar"><div class="lifeFill" id="foeLifeFill"></div><span class="lifeText" id="foeLifeText"></span></div>
+            <div class="blockBadge" id="foeBlock" title="Block absorbs damage">🛡 0</div>
+          </div>
+        </div>
+        <div class="deckPile" id="foeDeck" title="Opponent deck">🂠 <span id="foeDeckCount"></span></div>
+      </div>
+      <div id="foeHand" class="hand foeHand" aria-label="Opponent hand"></div>
+    </section>
+
+    <section id="arena" aria-label="Arena">
+      <div id="arenaFelt">
+        <div id="arenaLabel">THE EMBER ISLES</div>
+        <div id="playedRow"></div>
+        <div id="turnBanner"></div>
+      </div>
+      <aside id="logPanel" aria-label="Battle log">
+        <div id="logTitle">Battle Log</div>
+        <ol id="logList"></ol>
+      </aside>
+    </section>
+
+    <section id="youZone" aria-label="You">
+      <div class="fighter" id="youFighter">
+        <div class="avatar youAvatar">🌕</div>
+        <div class="fighterInfo">
+          <div class="fighterName">You — Warden of the Home Lantern</div>
+          <div class="lifeRow">
+            <div class="lifeBar"><div class="lifeFill youFill" id="youLifeFill"></div><span class="lifeText" id="youLifeText"></span></div>
+            <div class="blockBadge" id="youBlock" title="Block absorbs damage">🛡 0</div>
+          </div>
+        </div>
+        <div class="deckPile" id="youDeck" title="Your deck">🂠 <span id="youDeckCount"></span></div>
+      </div>
+      <div id="energyRow">
+        <span id="energyLabel">Embers</span>
+        <span id="energyPips"></span>
+        <span id="handCount"></span>
+      </div>
+      <div id="youHand" class="hand youHand" aria-label="Your hand"></div>
+      <div id="actionRow">
+        <button id="endTurnBtn" type="button">End Turn ⏎</button>
+        <div id="hint">Click a card or press 1–7 to play it · Space ends your turn · R restarts</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="titleScreen" class="overlay">
+    <div class="overlayCard titleCard">
+      <div class="titleLantern">🏮</div>
+      <h1>Lantern Clash</h1>
+      <p class="subtitle">Duel of the Ember Isles</p>
+      <p class="tagline">An original card duel. Outwit Sable, Keeper of the Far Lantern,
+      before your lantern burns out. Match suits to spark <b>Resonance</b>:
+      the second card of a suit you play in one turn hits <b>+2 harder</b>.</p>
+      <div class="titleSuits">
+        <span class="suitChip flame">🔥 Flame</span>
+        <span class="suitChip tide">💧 Tide</span>
+        <span class="suitChip gale">🍃 Gale</span>
+        <span class="suitChip stone">🪨 Stone</span>
+        <span class="suitChip lantern">🏮 Lantern</span>
+      </div>
+      <button id="startBtn" type="button">Light Your Lantern — Start Duel</button>
+      <p class="titleFoot">30 life each · Energy grows each round · First lantern out loses</p>
+    </div>
+  </div>
+
+  <div id="helpScreen" class="overlay hidden">
+    <div class="overlayCard">
+      <h2>How to play</h2>
+      <ul class="helpList">
+        <li><b>Goal:</b> reduce Sable's life from 30 to 0 before yours reaches 0.</li>
+        <li><b>Each round</b> you gain embers (energy) and draw a card. Energy grows by 1 every round, up to 8.</li>
+        <li><b>Play a card</b> by clicking it or pressing its number key (1–7). Each card costs embers, shown in the top-left gem.</li>
+        <li><b>Attack cards</b> deal their power as damage. <b>Block</b> (🛡) absorbs damage until your next turn. <b>Heal</b> restores life.</li>
+        <li><b>Resonance:</b> the second card of the same suit you play in one turn gains +2 power. Plan your hand around it.</li>
+        <li><b>End your turn</b> with the button or Space — then Sable plays.</li>
+        <li>Keyboard: 1–7 play a card · Space/Enter end turn · R restart · M sound · H help.</li>
+      </ul>
+      <button id="closeHelpBtn" type="button">Back to the table</button>
+    </div>
+  </div>
+
+  <div id="endScreen" class="overlay hidden">
+    <div class="overlayCard endCard">
+      <div id="endEmblem">🏮</div>
+      <h1 id="endTitle">Victory</h1>
+      <p id="endText"></p>
+      <p id="endStats"></p>
+      <button id="againBtn" type="button">Play again (R)</button>
+      <button id="titleBtn" type="button" class="ghostBtn">Back to title</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
